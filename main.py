@@ -1,5 +1,5 @@
 # Assignment 1 - File Manager
-# Ethan Mackay 101195400
+# Ethan Mackay
 
 from functions import *
 
