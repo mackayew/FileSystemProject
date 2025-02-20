@@ -202,7 +202,7 @@ def new_folder():
 
     folder_id = id_counter
 
-    id_counter = id_counter + 1
+    id_counter += 1
 
     parent_id = current_folder
 
@@ -225,7 +225,7 @@ def copy_file():
                 copy_count = 1
                 while True:
                     if (name + "(" + str(copy_count) + ")") in file_names:
-                        copy_count = copy_count + 1
+                        copy_count += 1
                     else:
 
                         # Copies are created by adding an (x) to the end of the filename
@@ -454,7 +454,7 @@ def print_sorted_folders():
 
     for folder in current_folders_sorted:
         print(counter, "---", folder)
-        counter = counter + 1
+        counter += 1
     wait = input("")
 
 
@@ -462,12 +462,15 @@ def print_sorted_folders():
 
 def verify_file_name(filename):
 
+    if filename.count('.') != 1:
+        return False
+
     illegals = {'/', '\\', ':', ';', "'", '"', '*', ' ', '=', '<', '>'}
-    
-    if filename.count('.') == 1:
-        for i in illegals:
-            if i in filename:
-                return False
+        
+    for i in illegals:
+        if i in filename:
+            return False
+            
     return True
 
 
