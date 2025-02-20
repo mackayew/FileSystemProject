@@ -461,45 +461,23 @@ def print_sorted_folders():
 # This function is used to check entered filenames for illegal characters
 
 def verify_file_name(filename):
+
+    illegals = {'/', '\\', ':', ';', "'", '"', '*', ' ', '=', '<', '>'}
+    
     if filename.count('.') == 1:
-        if '/' not in filename:
-            if '\\' not in filename:
-                if ':' not in filename:
-                    if ';' not in filename:
-                        if "'" not in filename:
-                            if '"' not in filename:
-                                if '*' not in filename:
-                                    if ' ' not in filename:
-                                        if '=' not in filename:
-                                            if '<' not in filename:
-                                                if '>' not in filename:
-
-                                                    # If the name contains no illegal characters, it passes the verification
-
-                                                    return True
-    return False
+        for i in illegals:
+            if i in filename:
+                return False
+    return True
 
 
 # This function is used to check entered folder names for illegal characters
 
 def verify_folder_name(foldername):
-    if '.' not in foldername:
-        if '/' not in foldername:
-            if '\\' not in foldername:
-                if ':' not in foldername:
-                    if ';' not in foldername:
-                        if "'" not in foldername:
-                            if '"' not in foldername:
-                                if '*' not in foldername:
-                                    if '[' not in foldername:
-                                        if ']' not in foldername:
-                                            if ',' not in foldername:
-                                                if '|' not in foldername:
-                                                    if '<' not in foldername:
-                                                        if '>' not in foldername:
-                                                            if '=' not in foldername:
 
-                                                                # If the name contains no illegal characters, it passes the verification
+    illegals = {'/', '\\', ':', ';', "'", '"', '*', '=', '<', '>', '[', ']', ',', '|'}
 
-                                                                return True
-    return False
+    for i in illegals:
+        if i in foldername:
+            return False
+    return True
